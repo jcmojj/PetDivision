@@ -5,6 +5,8 @@ import java.math.BigDecimal;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -17,16 +19,20 @@ public class ModeloDeTag implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	@Enumerated(EnumType.STRING)
 	private TagColor tagColor;
+	@Enumerated(EnumType.STRING)
 	private TagFormat tagFormat;
 	private BigDecimal alturaTag;
 	private BigDecimal espessuraTag;
 	private BigDecimal comprimentoTag;
 	private BigDecimal diametroTag;
+	@Enumerated(EnumType.STRING)
 	private TagMaterial tagMaterial;
 	private BigDecimal alturaIma;
 	private BigDecimal comprimentoIma;
 	private BigDecimal espessuraIma;
+	@Enumerated(EnumType.STRING)
 	private MagnetMaterial magnetMaterial;
 	@OneToMany//(mappedBy = "modeloDeTag")
 	private List<Tag> tags;

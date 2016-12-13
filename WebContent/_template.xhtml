@@ -1,0 +1,37 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+	<f:view contentType="text/html" />
+	
+	<h:head>
+		<title> MyKidPet </title>
+    </h:head>
+    <h:body>
+    
+       	<div style="position:relative; height:120px;">
+    		<h:graphicImage library="img" name="tatinha.png" style="position:absolute; display:inline-block; padding:0; margin:0;"/>
+        	<h2 style="position:absolute; display:inline-block; left:200px; bottom:0; padding:0; margin:0">MyKidPet - Testes - 
+        	    		<ui:insert name="cabecalho"/>
+        	</h2>
+        	<h:graphicImage />
+        	<h:graphicImage library="img" name="belinha.png" style="padding:0; margin:0; position:absolute; display:inline-block; left:700px;"/>
+        	
+		</div>
+    
+		
+        <hr />
+    	<br />
+    
+		<div id="conteudo">
+			<ui:insert name="corpo"/>
+		</div>
+		
+		<div id="rodape">
+			<hr />
+			<ui:insert name="rodape"/>  <span> </span>
+			<h:link outcome="index" value="Voltar para página inicial" />
+		</div>					
+   	</h:body>
+</html>

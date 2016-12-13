@@ -11,12 +11,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.com.mykidpet.modelo.dono.Paesci;
-import br.com.mykidpet.modelo.dono.Dono;
-import br.com.mykidpet.modelo.dono.Endereco;
-import br.com.mykidpet.modelo.dono.Inicializar;
-import br.com.mykidpet.modelo.dono.Logradouro;
-import br.com.mykidpet.modelo.dono.Pessoa;
+import br.com.mykidpet.modelo.usuario.Endereco;
+import br.com.mykidpet.modelo.usuario.Logradouro;
+import br.com.mykidpet.modelo.usuario.Paesci;
+import br.com.mykidpet.modelo.usuario.Pessoa;
+import br.com.mykidpet.modelo.usuario.Usuario;
 
 
 @WebServlet("/testeServletDono")
@@ -46,7 +45,7 @@ public class ServletTesteDono extends HttpServlet {
 		Paesci ciespa = em.find(Paesci.class,1);
 		Endereco endereco = new Endereco(logradouro, "Tebas", "296", "Apto 72A", "04634-031", ciespa);
 		em.persist(endereco);
-		Dono dono = new Dono( "jcmojj@gmail.com", "cacaio");
+		Usuario dono = new Usuario( "jcmojj@gmail.com", "cacaio");
 		em.persist(dono);
 		Pessoa pessoa = new Pessoa("Jose Carlos", "331.881.858-55", "30.028.659-4", "991318300", "55626928", endereco);
 		em.persist(pessoa);

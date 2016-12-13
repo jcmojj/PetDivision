@@ -5,9 +5,10 @@
 
 	<!-- unidade de persistencia com o nome controlefinancas -->
 	<persistence-unit name="mymanager">
-		
 		<!-- Implementacao do JPA2, no nosso caso Hibernate -->
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<jta-data-source>java:/mykidpetDS</jta-data-source>
+
 		<class>br.com.mykidpet.modelo.dono.Dono</class>		
 		<class>br.com.mykidpet.modelo.dono.Endereco</class>
 		<class>br.com.mykidpet.modelo.dono.Logradouro</class>
@@ -15,22 +16,31 @@
 		<class>br.com.mykidpet.modelo.dono.Pessoa</class>
 		<class>br.com.mykidpet.modelo.tag.ModeloDeTag</class>
 		<class>br.com.mykidpet.modelo.tag.Tag</class>
-		<properties>
-			<!-- Propriedades JDBC -->
-			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
-			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost/mykidpet" />
-			<property name="javax.persistence.jdbc.user" value="root" />
-			<property name="javax.persistence.jdbc.password" value="buddy01" />
-
+		<class>br.com.mykidpet.modelo.maquina.Maquina</class>
+		<class>br.com.mykidpet.modelo.petdamaquina.PetDaMaquina</class>
+		<class>br.com.mykidpet.modelo.petdamaquina.Bebida</class>
+		<class>br.com.mykidpet.modelo.petdamaquina.Refeicao</class>
+				
+		<shared-cache-mode>ENABLE_SELECTIVE</shared-cache-mode>
+		
+		
+		<properties> 
+				
 			<!-- Configuracoes especificas do Hibernate -->
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect" />
 
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.format_sql" value="false" />
-			
+			<!--	<property name="use_sql_comments" value="true" />-->
+
 			<!-- poderia ser: update, create, create-drop, none -->
 			<property name="hibernate.hbm2ddl.auto" value="create-drop" />
+			
+			<property name="hibernate.cache.use_second_level1_cache" value="true"/>
+			<property name="hibernate.cache.use_query_cache" value="true"/>
+			
 		</properties>
+	
 	</persistence-unit>
 
 </persistence>

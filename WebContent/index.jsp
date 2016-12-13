@@ -9,5 +9,6 @@
 <body>
 <a href="testeServletDono" >Dono</a>
 <a href="testeServletTag" >Tag</a>
+<a href="testeServletPet" >Pet</a>
 </body>
 </html>

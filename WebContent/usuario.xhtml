@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+			  <html xmlns="http://www.w3.org/1999/xhtml"
+					xmlns:ui="http://java.sun.com/jsf/facelets"
+					xmlns:f="http://java.sun.com/jsf/core"
+					xmlns:h="http://java.sun.com/jsf/html">
+
+    <ui:composition template="/_template.xhtml">
+   		<ui:define name="cabecalho">
+		   <h:outputText value="Cadastro de Usuarios" />
+    	</ui:define>
+		   
+   		<ui:define name="corpo">
+	        <h:form>
+	        	<f:validateBean disabled="true">
+			        <h:panelGrid columns="3">
+			        	<h:outputText value="Id" rendered="#{usuariosBean.usuario.id!=null}" />
+			        	<h:inputText id="id" value="#{usuariosBean.usuario.id}" rendered="#{usuariosBean.usuario.id!=null}" readonly="true"/>
+			        	<h:message for="id"  rendered="#{usuariosBean.usuario.id!=null}" />
+			        	
+			        	<h:outputText value="Email"/>
+			        	<h:inputText id="titular" value="#{usuariosBean.usuario.email}"/>
+			        	<h:message for="email" />
+			        	
+						<h:outputText value="Senha"/>
+						<h:inputText id="banco" value="#{usuariosBean.usuario.senha}"/>
+						<h:message for="senha" />
+			        	
+			        	<h:commandButton value="Gravar" action="#{usuariosBean.grava}"/> 
+			        </h:panelGrid>
+			    </f:validateBean>
+	        </h:form>
+	        
+	        <h2><h:outputText value="Todas as Contas" /></h2>
+	        <hr />
+	        <h:form>
+	        <h:dataTable value="#{usuariosBean.usuarios}" var="usuario">
+	        	<h:column>
+	        		<f:facet name="header"><h:outputText value="ID"/></f:facet>
+	        		#{usuario.id}
+	        	</h:column>
+	        	<h:column>
+	        		<f:facet name="header"><h:outputText value="Email"/></f:facet>
+	        		#{usuario.email}
+	        	</h:column>
+	        	<h:column>
+	        		<f:facet name="header"><h:outputText value="Senha"/></f:facet>
+	        		#{usuario.senha}
+	        	</h:column>
+	         	<h:column>
+	        		<f:facet name="header"><h:outputText value="Ações"/></f:facet>
+	        		<h:commandLink value="Remover" action="#{usuariosBean.remove}">
+					<f:setPropertyActionListener value="#{usuario}" target="#{usuariosBean.usuario}"/>
+	        		</h:commandLink> |
+	        		<h:commandLink value="Alterar">
+					<f:setPropertyActionListener value="#{usuario}" target="#{usuariosBean.usuario}"/>
+	        		</h:commandLink>
+	        	</h:column>
+	        </h:dataTable>
+	        </h:form>
+		</ui:define>
+	</ui:composition>
+</html>

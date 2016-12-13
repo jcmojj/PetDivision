@@ -1,13 +1,16 @@
 package br.com.mykidpet.dao;
 
+
 import java.util.List;
+
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaQuery;
 
+
 public class Dao<T> {
-	
-	private final Class<T> classe;
+
+	private final Class<T> classe;	
 
 	@Inject
 	private EntityManager manager;
@@ -21,10 +24,12 @@ public class Dao<T> {
 	}
 
 	public void remove(T t) {
+		manager.joinTransaction();
 		manager.remove(manager.merge(t));
 	}
 
 	public void atualiza(T t) {
+		manager.joinTransaction();
 		manager.merge(t);
 	}
 
@@ -39,6 +44,11 @@ public class Dao<T> {
 
 	public T buscaPorId(Long id) {
 		T instancia = manager.find(classe, id);
+		return instancia;
+	}
+	
+	public T buscaSomentId(Long id){
+		T instancia = manager.getReference(classe,id);
 		return instancia;
 	}
 
@@ -58,5 +68,19 @@ public class Dao<T> {
 				.setMaxResults(maxResults).getResultList();
 		return lista;
 	}
+
+//	private Class entityClass;
+//	
+//	   public Class getEntityClass() {
+//	        if (entityClass == null) {
+//	            //only works if one extends BaseDao, we will take care of it with CDI
+//	            entityClass = (Class) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
+//	        }
+//	        return entityClass;
+//	    }
+//	 
+//	    public void setEntityClass(Class entityClass) {
+//	        this.entityClass = entityClass;
+//	    }
 
 }
