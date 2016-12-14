@@ -21,6 +21,7 @@ public class UsuariosBean implements Serializable{
 	
 	private Usuario usuario = new Usuario();
 	private List<Usuario> usuarios;
+	
 
 	public Usuario getUsuario() {
 		return usuario;

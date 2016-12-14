@@ -32,9 +32,9 @@ public class Usuario  implements Serializable {
 	@Column(length=12, nullable=true)
 	private String apelido; // max 12 caracteres
 	@Temporal(TemporalType.TIMESTAMP)
-    private Calendar dataCriacao;
+    private Calendar dataCriacao = Calendar.getInstance();
 	@Temporal(TemporalType.TIMESTAMP)
-    private Calendar dataAlteracao;
+    private Calendar dataAlteracao = Calendar.getInstance();
 	@OneToOne
 	private Pessoa pessoa;
 	@OneToMany(mappedBy="usuario")

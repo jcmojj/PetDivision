@@ -1,4 +1,4 @@
-package br.com.mykidpet.util;
+package br.com.mykidpet.util.listener;
 
 import javax.faces.event.PhaseEvent;
 import javax.faces.event.PhaseId;

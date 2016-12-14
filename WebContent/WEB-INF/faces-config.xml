@@ -6,7 +6,7 @@
     version="2.2">
 	<lifecycle>
 		<phase-listener>
-			br.com.mykidpet.util.CicloDeVidaListener
+			br.com.mykidpet.util.listener.CicloDeVidaListener
 		</phase-listener>
 	</lifecycle>
 
